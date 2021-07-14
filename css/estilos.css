@@ -22,12 +22,17 @@ label {
     text-align: left;
 }
 
+
 .button{
     padding-left: 90px;
-}
+	border-radius: 7.5px;
 
+}
+ 
 button{
     margin-left: .5em;
+	border-radius: 7.5px;
+
 }
 
 
@@ -56,3 +61,14 @@ textarea {
     vertical-align: top;   
     height: 5em;
   }
+
+
+.btn btn-primary{
+	display: flex;
+    justify-content: flex-end;
+	margin-right: 5px;	
+	margin-left: 750px;
+}
+element.style {
+	margin-left: 750px;
+}

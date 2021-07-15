@@ -56,10 +56,10 @@ class Usuario extends Conexion{
 
 
 
-    function consulta_usuario($id){
+    function consulta_usuario($id_user){
         $user_consulta = "SELECT * FROM usuarios WHERE id_user = ?";
         $consulta = $this->conexion->prepare($user_consulta);
-        $data_user = array($id);
+        $data_user = array($id_user);
         $consulta->execute($data_user);
         $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
         return $resultado;

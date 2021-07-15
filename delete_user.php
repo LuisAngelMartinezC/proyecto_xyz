@@ -12,7 +12,7 @@
 require_once "includes/procesos/class_user.php";
 $usuario = new Usuario();
 
-echo $usuario->delete_user($_GET['idUser']);
+echo $usuario->delete_user($_GET['id_user']);
 ?>
 
 </body>

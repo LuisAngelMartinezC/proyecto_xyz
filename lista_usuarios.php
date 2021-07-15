@@ -30,7 +30,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     
-         </a>
+        </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">actualizar informacion</a>
             <a class="dropdown-item" href="#">pendiente</a>
@@ -56,22 +56,31 @@
   </nav>
 
 
+<?php
+require_once "includes/class_user.php";
+$user_system = new Usuario();
+
+$lista = $user_system->listar_usuarios();
+$prueba = $user_system->consulta_usuario("");
+//print_r("<pre>");
+//print_r($lista);
+?>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col -sm-9 col -xl-9">
                 <div class="card">
                     <div class="card-header">
                     modulo de estudiantes
-                     
-                     <button type="button" class="btn btn-primary" id="botonkk" href="./modificar_estudiante.html" >crear estudiante</button>
+                    <a type="button" class="btn" id="boton" href="./modificar_usuario.php">crear Usuario</a>
                     </div>
-                                                            
-                    <div class="card-boddy">
+
+                    <div class="card-body">
                         <table class="table">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Iddentificacion</th>
+                                <th scope="col">Identificacion</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Telefono</th>
@@ -79,73 +88,63 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>1144174114</td>
-                                <td>Lisbeth Karina Roldan Loaiza</td>
-                                <td>lisb-karina@gmail.com</td>
-                                <td>315245785</td>
-                                <td><button style="background-color: rgb(81, 209, 81);color:snow;">notas</button>
+                            <?php
+                              for($x = 0; $x < sizeof($lista); $x++){
+                            ?>
+                      <tr>
+                        <td class="table-primary"><?php  echo $lista[$x]['id'] ?></td>
+                        <td class="table-secondary"><?php  echo $lista[$x]['identificacion'] ?></td>
+                        <td class="table-success"><?php  echo $lista[$x]['nombre'] ?></td>
+                        <td class="table-danger"><?php  echo $lista[$x]['email'] ?></td>
+                        <td class="table-info"><?php  echo $lista[$x]['telefono'] ?></td>
+                        <td>
 
-                                  <br> <br>
-                                    <button style="background-color: rgb(53, 147, 224); color: snow;">modificar</button>
+                            <a href="edit_user.php?idUser=<?php echo $lista[$x]['id'] ?>">
+                                <button class="btn btn-success">Notas</button>
+                            </a>
 
-                                  <br> <br>
-                                    <button style="background-color: rgb(250, 41, 41); color: snow; ">eliminar</button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>123456789</td>
-                                <td>Jorge Mina Prestamogo</td>
-                                <td>jorge@gmail.com</td>
-                                <td>3214569874</td>
-                                <td><button style="background-color: rgb(81, 209, 81);color:snow;">notas</button>
+                            <a href="edit_user.php?idUser=<?php echo $lista[$x]['id'] ?>">
+                                <button class="btn btn-warning">Editar</button>
+                            </a>
 
-                                  <br> <br>
-                                    <button style="background-color: rgb(53, 147, 224); color: snow;">modificar</button>
-
-                                  <br> <br>
-                                    <button style="background-color: rgb(250, 41, 41); color: snow; ">eliminar</button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>1107079637</td>
-                                <td>David Galvis</td>
-                                <td>cdgc9637@outlook.com</td>
-                                <td>312547896</td>
-                                <td><button style="background-color: rgb(81, 209, 81);color:snow;">notas</button>
-
-                                  <br> <br>
-                                    <button style="background-color: rgb(53, 147, 224); color: snow;">modificar</button>
-
-                                  <br> <br>
-                                    <button style="background-color: rgb(250, 41, 41); color: snow; ">eliminar</button>
-                                  </td>
-                              <tr>
-                                <th scope="row">4</th>
-                                <td>987456321</td>
-                                <td>Karol Tatiana Gomez Cardona</td>
-                                <td>karol@gmail.com</td>
-                                <td>48795487</td>
-                                <td><button style="background-color: rgb(81, 209, 81);color:snow;">notas</button>
-
-                                  <br> <br>
-                                    <button style="background-color: rgb(53, 147, 224); color: snow;">modificar</button>
-
-                                  <br> <br>
-                                    <button style="background-color: rgb(250, 41, 41); color: snow; ">eliminar</button>
-                                  </td>
-                              </tr>
+                            <a href="delete_user.php?idUser=<?php echo $lista[$x]['id'] ?>">
+                                <button onclick="confirmar_eliminar_usuario(<?php echo $lista[$x]['id']?> )" class="btn btn-danger">Eliminar</button>
+                            </a>
+                        </td>
+                      </tr>
+                
+                <?php
+                }
+                ?>
                             </tbody>
-                          </table>
+                              
+                        </table>
                     </div>
                     
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        function confirmar_eliminar_usuario(id) {
+            Swal.fire({
+                title: 'Esta seguro de Eliminar este dato?',
+                text: "Esta accion no se puede revertir",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                allowEscapeKey: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.href ="http://localhost/registro_bd/delete_user.php"+id;
+                }
+            })
+        }
+    </script>
     
     <script src="./js/jquery-3.6.min.js"> </script>
     <script src="./bootstrap-4.6/js/bootstrap.bundle.min.js"> </script>

@@ -4,7 +4,7 @@ class Conexion{
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
-    private $db = "conectar";
+    private $db = "proyecto_db";
     private $con;
 
     function __construct()

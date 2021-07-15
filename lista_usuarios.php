@@ -74,7 +74,7 @@ $prueba = $user_system->consulta_usuario("");
                 <div class="card">
                     <div class="card-header">
                     modulo de estudiantes
-                    <a type="button" class="btn" id="boton" href="./modificar_usuario.php">crear Usuario</a>
+                    <a type="button" class="btn" id="boton" href="./registro.php">crear Usuario</a>
                     </div>
 
                     <div class="card-body">

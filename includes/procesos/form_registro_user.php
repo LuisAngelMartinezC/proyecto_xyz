@@ -12,3 +12,5 @@ $respuesta = $user_sistema->registro_usuario(
     $_POST["rol_user"]
 );
 echo $respuesta;
+
+header("location:http://localhost/proyecto_xyzz/login.php");

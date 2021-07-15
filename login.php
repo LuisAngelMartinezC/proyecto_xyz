@@ -56,8 +56,8 @@ if($_POST){
     $conex = new Conexion();
     $conex_login = $conex->conexion_db();
     $conex_login->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $usuario_form = $_POST['email_user'];
-    $pass_user = $POST['pass_user'];
+    $usuario_form = $_POST['correo_user'];
+    $pass_user = $_POST['pass_user'];
 
 
     $sql = "SELECT * FROM usuarios WHERE email = :usuario AND pass = :pass";
@@ -67,8 +67,7 @@ if($_POST){
     $query->execute();
 
     $usuario_data = $query->fetch(PDO::FETCH_ASSOC);
-
-
+    
     if($usuario_data){
         $_SESSION['id'] = $usuario_data['id_user'];
         $_SESSION['id_rol'] = $usuario_data['id_rol'];

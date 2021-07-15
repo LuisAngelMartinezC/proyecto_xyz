@@ -93,7 +93,7 @@ class Usuario extends Conexion{
     }
 
     function delete_user($id){
-        $query_delete = "DELETE FROM usuarios WHERE id = ?";
+        $query_delete = "DELETE FROM usuarios WHERE id_user = ?";
         $delete = $this->conexion->prepare($query_delete);
         $array_delete = array($id);
         $delete->execute($array_delete);
@@ -106,7 +106,7 @@ class Usuario extends Conexion{
 
             setTimeout('redireccion()', 2000);
             function redireccion(){
-            window.location = 'http://localhost:8080/erp_notas_ispa/lista_usuarios.php';
+            window.location = 'http://localhost/proyecto_xyzz/lista_usuarios.php';
             }
             </script>
             ";

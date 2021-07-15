@@ -63,12 +63,8 @@ textarea {
   }
 
 
-.btn btn-primary{
-	display: flex;
-    justify-content: flex-end;
-	margin-right: 5px;	
-	margin-left: 750px;
-}
-element.style {
-	margin-left: 750px;
+.btn{
+	background-color: blue;
+	padding-left: 10px;
+	border-radius: 7.5px;
 }

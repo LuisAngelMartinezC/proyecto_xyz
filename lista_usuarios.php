@@ -1,5 +1,5 @@
 <?php
-require_once "includes/class_user.php";
+require_once "includes/procesos/class_user.php";
 $usuario = new Usuario();
 $datos=$usuario->consulta_usuario($_GET["id_user"]);
 // print_r($datos);exit;

@@ -32,7 +32,7 @@ class Usuario extends Conexion{
             $this->nombre,
             $this->email,
             $this->telefono,
-            $this->password,
+            $this->pass,
             $this->rol
         );
         $insert->execute($data_user);
@@ -50,7 +50,7 @@ class Usuario extends Conexion{
      * FETCH_ASSOC //devuelve info como array 
      * FETCH_NUM // devuelve info como array numerico
      * FETCH_OBJ // $a->b // devuelve info como objeto
-     * 
+     * FETCH_BOTH // devuelve la info con ambos formatos
      * 
      */
 
@@ -103,6 +103,11 @@ class Usuario extends Conexion{
             'El usuario quedo Fue eliminado correctamente de su base de datos.',
             'success'
             )
+
+            setTimeout('redireccion()', 2000);
+            function redireccion(){
+            window.location = 'http://localhost:8080/erp_notas_ispa/lista_usuarios.php';
+            }
             </script>
             ";
     }

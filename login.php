@@ -67,7 +67,7 @@ if($_POST){
     $query->execute();
 
     $usuario_data = $query->fetch(PDO::FETCH_ASSOC);
-    //print_r($usuario);
+
 
     if($usuario_data){
         $_SESSION['id'] = $usuario_data['id_user'];
